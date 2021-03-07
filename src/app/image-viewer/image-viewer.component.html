@@ -1,0 +1,6 @@
+<div *ngIf="open" class="viewer-container bg-dark">
+  <div class="viewer-content">
+    <a class="btn btn-light close-button" (click)="close()">Close photo</a>
+    <img class="main-img" [src]="imageSrc" (error)="onImgError($event)" />
+  </div>
+</div>

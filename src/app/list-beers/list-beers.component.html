@@ -1,0 +1,22 @@
+<ul class="list-group mt-4">
+  <li
+    class="list-group-item"
+    *ngFor="let beer of beersByBrewer | slice: startPage:paginationLimit"
+  >
+    <div class="d-flex">
+      <div class="mr-3" (click)="newOpen(beer.image_url)">
+        <img src="{{ beer.image_url }}" (error)="onImgError($event)" />
+      </div>
+      <div class="d-flex align-items-center">
+        <div>{{ beer.name }}<br />{{ beer.type }}</div>
+      </div>
+    </div>
+  </li>
+  <button
+    class="list-group-item list-group-item-action active font-weight-bold"
+    *ngIf="paginationLimit < beersByBrewer.length"
+    (click)="showMoreItems()"
+  >
+    Load more...
+  </button>
+</ul>

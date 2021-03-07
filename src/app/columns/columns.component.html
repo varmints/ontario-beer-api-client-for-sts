@@ -1,0 +1,31 @@
+<div class="d-flex justify-content-center">
+  <div class="btn-group" dropdown>
+    <button
+      id="button-basic"
+      dropdownToggle
+      type="button"
+      class="btn btn-primary dropdown-toggle"
+      aria-controls="dropdown-basic"
+    >
+      {{ dropdownTitle }}<span class="caret"></span>
+    </button>
+    <ul
+      id="dropdown-basic"
+      *dropdownMenu
+      class="dropdown-menu"
+      role="menu"
+      aria-labelledby="button-basic"
+    >
+      <li role="menuitem" *ngFor="let beer of beers">
+        <a class="dropdown-item" (click)="clickEvent(beer.brewer)">{{
+          beer.brewer
+        }}</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div>
+  <div *ngIf="beersByBrewer">
+    <app-list-beers [beersByBrewer]="beersByBrewer"></app-list-beers>
+  </div>
+</div>

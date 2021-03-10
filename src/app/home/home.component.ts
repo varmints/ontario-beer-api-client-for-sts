@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Beer } from '../_models/beer';
 import { BeersService } from '../_services/beers.service';
 
@@ -8,20 +9,24 @@ import { BeersService } from '../_services/beers.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  beers: Beer[];
+  beers;
+  subscription: Subscription;
 
-  constructor(private beerService: BeersService) {}
+  constructor(private beersService: BeersService) {}
 
   ngOnInit(): void {
+    this.subscription = this.beersService.currentBeersByBrewer.subscribe(
+      (beers) => (this.beers = beers)
+    );
     this.loadBrewers();
   }
 
   loadBrewers() {
-    this.beerService
+    this.beersService
       .getBeers()
       .pipe()
       .subscribe((response: any) => {
-        this.beers = response;
+        this.beersService.changeBeers(response);
       });
   }
 }

@@ -1,0 +1,9 @@
+<div>dark</div>
+<div
+  class="oval m-2"
+  [ngClass]="{ ovalSelected: isDarkMode == false }"
+  (click)="toggleDarkMode()"
+>
+  <div class="button" [ngClass]="{ buttonSelected: isDarkMode == false }"></div>
+</div>
+<div>light</div>

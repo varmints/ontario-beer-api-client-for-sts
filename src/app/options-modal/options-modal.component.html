@@ -4,7 +4,7 @@
 
 <ng-template #template>
   <div class="modal-header">
-    <h5 class="modal-title pull-left">Modal</h5>
+    <h5 class="modal-title pull-left">Options</h5>
     <button
       type="button"
       class="close pull-right"
@@ -14,5 +14,24 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body">This is a modal.</div>
+  <div class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <div>Elements to load:</div>
+          <app-to-load-dropdown></app-to-load-dropdown>
+        </div>
+        <div class="col-6">
+          <div>Sort by:</div>
+          <app-sort-dropdown></app-sort-dropdown>
+        </div>
+        <div class="col-12 mt-3">
+          <div class="text-center">Change layout mode:</div>
+          <app-theme-toggle
+            class="d-flex align-items-center justify-content-center"
+          ></app-theme-toggle>
+        </div>
+      </div>
+    </div>
+  </div>
 </ng-template>

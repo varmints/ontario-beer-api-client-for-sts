@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ImageViewerService } from '../_services/image-viewer.service';
+import { ToLoadService } from '../_services/to-load.service';
 
 @Component({
   selector: 'app-list-beers',
@@ -8,20 +10,28 @@ import { ImageViewerService } from '../_services/image-viewer.service';
 })
 export class ListBeersComponent implements OnInit {
   @Input() beersByBrewer;
-  startPage: Number;
-  paginationLimit: Number;
+  startPage: number;
+  paginationLimit: number;
   open: boolean;
   imageSrc: string;
+  toLoad: number;
+  subscription: Subscription;
 
-  constructor(private imageViewerService: ImageViewerService) {
+  constructor(
+    private imageViewerService: ImageViewerService,
+    private toLoadService: ToLoadService
+  ) {
     this.startPage = 0;
-    this.paginationLimit = 15;
+    this.subscription = this.toLoadService.currentToLoad.subscribe(
+      (toLoad) => (this.toLoad = toLoad)
+    );
+    this.paginationLimit = this.toLoad;
   }
 
   ngOnInit(): void {}
 
   showMoreItems() {
-    this.paginationLimit = Number(this.paginationLimit) + 15;
+    this.paginationLimit = Number(this.paginationLimit) + Number(this.toLoad);
   }
 
   newOpen(imageSrc) {

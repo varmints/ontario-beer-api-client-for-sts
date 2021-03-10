@@ -14,6 +14,9 @@ import { ListBeersComponent } from './list-beers/list-beers.component';
 import { FooterComponent } from './footer/footer.component';
 import { ImageViewerComponent } from './image-viewer/image-viewer.component';
 import { OptionsModalComponent } from './options-modal/options-modal.component';
+import { ThemeToggleComponent } from './theme-toggle/theme-toggle.component';
+import { SortDropdownComponent } from './_forms/sort-dropdown/sort-dropdown.component';
+import { ToLoadDropdownComponent } from './_forms/to-load-dropdown/to-load-dropdown.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,9 @@ import { OptionsModalComponent } from './options-modal/options-modal.component';
     FooterComponent,
     ImageViewerComponent,
     OptionsModalComponent,
+    ThemeToggleComponent,
+    SortDropdownComponent,
+    ToLoadDropdownComponent,
   ],
   imports: [
     BrowserModule,

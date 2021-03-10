@@ -1,0 +1,24 @@
+<div class="btn-group my-2" dropdown>
+  <button
+    id="button-basic"
+    dropdownToggle
+    type="button"
+    class="btn btn-primary dropdown-toggle"
+    aria-controls="dropdown-basic"
+  >
+    {{ toLoad }}<span class="caret"></span>
+  </button>
+  <ul
+    id="dropdown-basic"
+    *dropdownMenu
+    class="dropdown-menu"
+    role="menu"
+    aria-labelledby="button-basic"
+  >
+    <li role="menuitem" *ngFor="let availableOption of availableOptions">
+      <a class="dropdown-item" (click)="changeToLoad(availableOption)">{{
+        availableOption
+      }}</a>
+    </li>
+  </ul>
+</div>
